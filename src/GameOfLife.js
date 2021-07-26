@@ -1,10 +1,11 @@
 import './Gol.css';
-import React, {useCallback, useState, useRef} from "react"
+import React, {useCallback, useState, useRef, useEffect} from "react"
 import produce from 'immer'
 
-const numRows = 50;
-const numCols = 50;
+const numRows = Math.floor(window.innerHeight/21);
+const numCols = Math.floor(window.innerWidth/20);
 
+console.log(window.innerWidth/50)
 const operations = [
     [0,1],
     [0,-1],
@@ -24,11 +25,19 @@ const generateEmptyGrid = () =>{
     return rows;
 }
 
+const generateRandomGrid = () =>{
+    const rows = [];
+        for (let i = 0; i< numRows; i++) {
+            rows.push(Array.from(Array(numCols),() =>  Math.random() > .6 ? 1 : 0 ));
+        }
+    return rows;
+}
+
 function GameOfLife(){
     const [grid, setGrid] = useState(() => {
-        return generateEmptyGrid()
+        return generateRandomGrid()
     });
-    const [ run, setRun] = useState(false)
+    const [ run, setRun] = useState(true)
 
     const runningRef = useRef(run);
     runningRef.current = run;
@@ -60,11 +69,15 @@ function GameOfLife(){
             })
         })
         
-        setTimeout(runSimulation, 10)
+        setTimeout(runSimulation, 500)
     }, [])
-  
+    
+
+    useEffect(() => {
+        runSimulation()
+    }, [])
     return(
-        <>
+        <div style = {{}}>
         <button onClick = {() => {
                 setRun(!run);
                 if (!run){
@@ -78,15 +91,11 @@ function GameOfLife(){
             Clear
         </button>
         <button onClick= {() => {
-            const rows = [];
-            for (let i = 0; i< numRows; i++) {
-                rows.push(Array.from(Array(numCols),() => Math.random() > .6 ? 1 : 0 ));
-            }
-            setGrid(rows);
+            generateRandomGrid()
         }}>
             Random
         </button>
-        <div style = {{display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px )` }}>
+        <div style = {{display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px )`, position: 'absolute', zIndex: -1, backgroundColor: "#E3E0DD" }}>
            {grid.map((rows, i) => rows.map( (col, k) =>
             <div 
                 key={`${i}-${k}`} 
@@ -96,10 +105,11 @@ function GameOfLife(){
                     })
                     setGrid(newGrid)
                 }}
-                style = {{width: 20, height: 20, backgroundColor: grid[i][k] ? "#17BF1B" : 'white', 
-                border:"solid 1px black" }} />))}
+                style = {{width: 20, height: 21, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .5s ease",
+                WebkitTransition: "all .5s ease",
+                MozTransition: "all .5s ease"}} />))}
         </div>
-        </>
+        </div>
     )
 }
 

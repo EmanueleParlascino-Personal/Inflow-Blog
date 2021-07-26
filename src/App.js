@@ -5,9 +5,14 @@ import GameOfLife from './GameOfLife';
 function App() {
 
   return (
-    <div className="App">
-  
+    <div >
       <GameOfLife/>
+      <h1>Test H1111111111111</h1>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h1>Test H1111111111111</h1>
     </div>
   );
 }
