@@ -1,1 +1,21 @@
 
+.main{
+    display: flex;
+    height: 100%;
+}
+
+.name{
+    font-family: "Blue";
+    font-size: 4rem;
+   }
+.portfolio{
+    font-family: "Roboto";
+    font-size: 3rem;
+}
+.names{
+    padding: 40px;
+    margin-top: 20%;
+    margin-left: 5%;
+    border-radius: 10px;
+    background-color: rgba(81, 25, 0, 0.2);
+}

@@ -5,14 +5,12 @@ import GameOfLife from './GameOfLife';
 function App() {
 
   return (
-    <div >
+    <div className = "main">
       <GameOfLife/>
-      <h1>Test H1111111111111</h1>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <h1>Test H1111111111111</h1>
+      <div className = "names">
+        <h1 className="name">Emanuele Parlascino</h1>
+        <h1 className = "portfolio">My Portfolio</h1>
+      </div>
     </div>
   );
 }

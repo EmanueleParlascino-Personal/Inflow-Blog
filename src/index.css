@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: "Parma";
+  src: local("Parma"),
+   url("./Fonts/Parma.ttf") format("truetype");
+  font-weight: bold;
+  }
+
+@font-face {
+  font-family: "Blue";
+  src: local("BluePrinted"),
+    url("./Fonts/BluePrinted.ttf") format("truetype");
+  font-weight: bold;
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    src: local("Roboto"),
+      url("./Fonts/Roboto-Light.ttf") format("truetype");
+    font-weight: bold;
+    }

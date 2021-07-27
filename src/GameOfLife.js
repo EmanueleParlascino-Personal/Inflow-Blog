@@ -2,10 +2,10 @@ import './Gol.css';
 import React, {useCallback, useState, useRef, useEffect} from "react"
 import produce from 'immer'
 
-const numRows = Math.floor(window.innerHeight/21);
+const numRows = Math.floor(window.innerHeight/20);
 const numCols = Math.floor(window.innerWidth/20);
 
-console.log(window.innerWidth/50)
+console.log(numRows)
 const operations = [
     [0,1],
     [0,-1],
@@ -77,38 +77,46 @@ function GameOfLife(){
         runSimulation()
     }, [])
     return(
-        <div style = {{}}>
-        <button onClick = {() => {
-                setRun(!run);
-                if (!run){
-                runningRef.current = true; 
-                runSimulation()}}}>
-            {run ? 'stop' : 'start'}
-        </button>
-        <button onClick = {() => {
-            setGrid(generateEmptyGrid())
-        }}>
-            Clear
-        </button>
-        <button onClick= {() => {
-            generateRandomGrid()
-        }}>
-            Random
-        </button>
-        <div style = {{display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px )`, position: 'absolute', zIndex: -1, backgroundColor: "#E3E0DD" }}>
-           {grid.map((rows, i) => rows.map( (col, k) =>
-            <div 
-                key={`${i}-${k}`} 
-                onClick= {()=>{
-                    const newGrid = produce(grid, gridCopy => {
-                        gridCopy[i][k] = grid[i][k] ? 0 : 1;
-                    })
-                    setGrid(newGrid)
-                }}
-                style = {{width: 20, height: 21, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .5s ease",
-                WebkitTransition: "all .5s ease",
-                MozTransition: "all .5s ease"}} />))}
-        </div>
+        <div className = "gol-container">
+            <div style = {{display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px )`, position: 'absolute', zIndex: -1, backgroundColor: "#E3E0DD" }}>
+            {grid.map((rows, i) => rows.map( (col, k) =>
+                <div 
+                    key={`${i}-${k}`} 
+                    onClick= {()=>{
+                        const newGrid = produce(grid, gridCopy => {
+                            gridCopy[i][k] = grid[i][k] ? 0 : 1;
+                        })
+                        setGrid(newGrid)
+                    }}
+                    style = {{width: 20, height: 21, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .5s ease",
+                    WebkitTransition: "all .5s ease",
+                    MozTransition: "all .5s ease"}} />))}
+            </div>
+            <div className = "buttons-container">
+                <p className = "comands">Game of Life Background Controls</p>
+                <div className = "buttons">
+                    <button className = "button"
+                            onClick = {() => {
+                            setRun(!run);
+                            if (!run){
+                            runningRef.current = true; 
+                            runSimulation()}}}>
+                        {run ? 'Stop' : 'Start'}
+                    </button>
+                    <button className = "button"
+                        onClick = {() => {
+                        setGrid(generateEmptyGrid())
+                    }}>
+                        Clear
+                    </button>
+                    <button className = "button"
+                        onClick= {() => {
+                        setGrid(generateRandomGrid())
+                    }}>
+                        Random
+                    </button>
+                </div>
+            </div>    
         </div>
     )
 }
