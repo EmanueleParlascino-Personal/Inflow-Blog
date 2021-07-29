@@ -1,11 +1,17 @@
 
 .main{
     display: flex;
-    height: 100%;
+
+}
+.content{
+    display: flex;
+    margin-top: 15%;
+    justify-content: space-around;
+    width: 100%;
 }
 
 .name{
-    font-family: "Blue";
+    font-family: "Roboto";
     font-size: 4rem;
    }
 .portfolio{
@@ -13,9 +19,43 @@
     font-size: 3rem;
 }
 .names{
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    margin-right: 10vh;
     padding: 40px;
-    margin-top: 20%;
     margin-left: 5%;
-    border-radius: 10px;
-    background-color: rgba(81, 25, 0, 0.2);
+    border-radius: 5vh;
+    background-color: rgba(81, 25, 0, 0.15);
+}
+
+.projects-container{
+    display:grid;
+    grid-template-columns: repeat(2, 2fr);
+    grid-template-rows: repeat(2, .5fr);
+    row-gap: -50px;
+    padding: 5vh;
+    grid-gap: 10vh;
+    height: 50vh;
+    width: 70vh;
+    background: rgba(81, 25, 0, 0.2);
+    background: radial-gradient(circle, rgba(81, 25, 0, 0.15) 0%, rgba(253,187,45,0) 70%); 
+    border-radius: 5vh;
+   
+    right:0
+}
+
+.project{
+    height: 20vh;
+    width: 200px;
+}
+.project-img{
+    height: 100px;
+    width: 200px;
+}
+.project-title{
+
+}
+.description{
+
 }

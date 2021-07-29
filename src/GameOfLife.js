@@ -2,7 +2,7 @@ import './Gol.css';
 import React, {useCallback, useState, useRef, useEffect} from "react"
 import produce from 'immer'
 
-const numRows = Math.floor(window.innerHeight/20);
+const numRows = Math.floor(window.innerHeight/18);
 const numCols = Math.floor(window.innerWidth/20);
 
 console.log(numRows)
@@ -52,8 +52,8 @@ function GameOfLife(){
                     for (let k=0; k< numCols; k++){
                         let neighbors = 0;
                         operations.forEach(([x,y])=>{
-                            const newI = i + x;
-                            const newK = k + y;
+                            const newI = (i + x + numRows) % numRows;
+                            const newK = (k + y + numCols) % numCols;
                             if (newI >= 0 && newI < numRows && newK >= 0 &&newK < numCols){
                                 neighbors += g[newI][newK]
                             }
@@ -69,7 +69,7 @@ function GameOfLife(){
             })
         })
         
-        setTimeout(runSimulation, 500)
+        setTimeout(runSimulation, 300)
     }, [])
     
 
@@ -88,7 +88,7 @@ function GameOfLife(){
                         })
                         setGrid(newGrid)
                     }}
-                    style = {{width: 20, height: 21, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .5s ease",
+                    style = {{width: 20, height: 20, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .3s ease",
                     WebkitTransition: "all .5s ease",
                     MozTransition: "all .5s ease"}} />))}
             </div>

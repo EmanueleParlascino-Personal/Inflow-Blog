@@ -19,6 +19,7 @@
 .button{
     font-size: 20px;
     font-weight: 200;
+    border-radius: 20px;
     letter-spacing: 1px;
     padding: 13px 50px 13px;
     outline: 0;
@@ -30,13 +31,14 @@
 
 .button::after {
     content: "";
-    background-color: #B6AEA4;
+    background-color: rgba(81, 25, 0, 0.15);
+    border-radius: 20px;
     width: 100%;
     z-index: -1;
     position: absolute;
     height: 100%;
     top: 7px;
-    left: 7px;
+    right: 1px;
     transition: 0.3s;
   }
   
