@@ -75,6 +75,7 @@ function GameOfLife(){
 
     useEffect(() => {
         runSimulation()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return(
         <div className = "gol-container">
@@ -93,7 +94,7 @@ function GameOfLife(){
                     MozTransition: "all .5s ease"}} />))}
             </div>
             <div className = "buttons-container">
-                <p className = "comands">Game of Life Background Controls</p>
+                <p className = "comands">Background Controls</p>
                 <div className = "buttons">
                     <button className = "button"
                             onClick = {() => {
@@ -101,19 +102,19 @@ function GameOfLife(){
                             if (!run){
                             runningRef.current = true; 
                             runSimulation()}}}>
-                        {run ? 'Stop' : 'Start'}
+                        {run ? '⏹' : '▶'}
                     </button>
                     <button className = "button"
                         onClick = {() => {
                         setGrid(generateEmptyGrid())
                     }}>
-                        Clear
+                        ❌
                     </button>
                     <button className = "button"
                         onClick= {() => {
                         setGrid(generateRandomGrid())
                     }}>
-                        Random
+                        🔄
                     </button>
                 </div>
             </div>    

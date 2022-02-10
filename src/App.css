@@ -10,52 +10,9 @@
     width: 100%;
 }
 
-.name{
-    font-family: "Roboto";
-    font-size: 4rem;
-   }
-.portfolio{
-    font-family: "Roboto";
-    font-size: 3rem;
-}
-.names{
-    display: flex;
-    flex-direction: column;
-    height: 30vh;
-    margin-right: 10vh;
-    padding: 40px;
-    margin-left: 5%;
-    border-radius: 5vh;
-    background-color: rgba(81, 25, 0, 0.15);
-}
-
-.projects-container{
-    display:grid;
-    grid-template-columns: repeat(2, 2fr);
-    grid-template-rows: repeat(2, .5fr);
-    row-gap: -50px;
-    padding: 5vh;
-    grid-gap: 10vh;
-    height: 50vh;
-    width: 70vh;
-    background: rgba(81, 25, 0, 0.2);
-    background: radial-gradient(circle, rgba(81, 25, 0, 0.15) 0%, rgba(253,187,45,0) 70%); 
-    border-radius: 5vh;
-   
-    right:0
-}
-
-.project{
-    height: 20vh;
-    width: 200px;
-}
-.project-img{
-    height: 100px;
-    width: 200px;
-}
-.project-title{
-
-}
-.description{
-
-}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex-direction: row;
+  }
