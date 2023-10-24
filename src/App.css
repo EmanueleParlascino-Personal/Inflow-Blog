@@ -1,18 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Playpen+Sans&family=Roboto:wght@100&family=Shadows+Into+Light&display=swap');
 
 .main{
     display: flex;
-
-}
-.content{
-    display: flex;
-    margin-top: 15%;
-    justify-content: space-around;
-    width: 100%;
+    flex-direction: column;
+    font-family: 'Shadows Into Light', cursive;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    flex-direction: row;
-  }
+.statement{
+    width: 40%;
+    margin-top: 20%;
+    margin-left: 5%;
+    padding: 55px;
+    border-radius: 65%;
+    background-color: #c5a27f27;
+    font-family: 'Playpen Sans', cursive;
+    z-index: 1;
+}
+
+

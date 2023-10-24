@@ -1,43 +1,72 @@
 import './Gol.css';
-import React, {useCallback, useState, useRef, useEffect} from "react"
+import React, {useCallback, useState, useRef, useEffect, useLayoutEffect} from "react"
 import produce from 'immer'
 
-const numRows = Math.floor(window.innerHeight/18);
-const numCols = Math.floor(window.innerWidth/20);
 
-console.log(numRows)
-const operations = [
-    [0,1],
-    [0,-1],
-    [1,-1],
-    [-1,1],
-    [1,1],
-    [-1,-1],
-    [1,0],
-    [-1, 0],
-]
 
-const generateEmptyGrid = () =>{
-    const rows = [];
-        for (let i = 0; i< numRows; i++) {
-            rows.push(Array.from(Array(numCols),() => 0 ));
+
+    let numRows = Math.floor(window.innerHeight/19);
+    let numCols = Math.floor(window.innerWidth/20);
+
+    const operations = [
+        [0,1],
+        [0,-1],
+        [1,-1],
+        [-1,1],
+        [1,1],
+        [-1,-1],
+        [1,0],
+        [-1, 0],
+    ]
+
+
+    function useWindowSize() {
+        const [size, setSize] = useState([0, 0]);
+        useLayoutEffect(() => {
+        function updateSize() {
+            setSize([window.innerWidth, window.innerHeight]);
         }
-    return rows;
-}
+        window.addEventListener('resize', updateSize);
+        updateSize();
+        return () => window.removeEventListener('resize', updateSize);
+        }, []);
+        return size;
+    }
+    const generateEmptyGrid = () =>{
+        const rows = [];
+            for (let i = 0; i< numRows; i++) {
+                rows.push(Array.from(Array(numCols),() => 0 ));
+            }
+        return rows;
+    }
 
-const generateRandomGrid = () =>{
-    const rows = [];
-        for (let i = 0; i< numRows; i++) {
-            rows.push(Array.from(Array(numCols),() =>  Math.random() > .6 ? 1 : 0 ));
-        }
-    return rows;
-}
+    const generateRandomGrid = () =>{
+        const rows = [];
+            for (let i = 0; i< numRows; i++) {
+                rows.push(Array.from(Array(numCols),() =>  Math.random() > .6 ? 1 : 0 ));
+            }
+        return rows;
+    }
+
 
 function GameOfLife(){
     const [grid, setGrid] = useState(() => {
         return generateRandomGrid()
     });
     const [ run, setRun] = useState(true)
+
+    const [width, height] = useWindowSize();
+
+    //numRows = height;
+    //numCols = width;
+    
+
+
+   
+
+    
+
+    
 
     const runningRef = useRef(run);
     runningRef.current = run;
@@ -78,6 +107,7 @@ function GameOfLife(){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return(
+        <div>
         <div className = "gol-container">
             <div style = {{display: 'grid', gridTemplateColumns: `repeat(${numCols}, 20px )`, position: 'absolute', zIndex: -1, backgroundColor: "#E3E0DD" }}>
             {grid.map((rows, i) => rows.map( (col, k) =>
@@ -92,33 +122,35 @@ function GameOfLife(){
                     style = {{width: 20, height: 20, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .3s ease",
                     WebkitTransition: "all .5s ease",
                     MozTransition: "all .5s ease"}} />))}
-            </div>
-            <div className = "buttons-container">
-                <p className = "comands">Background Controls</p>
-                <div className = "buttons">
-                    <button className = "button"
-                            onClick = {() => {
-                            setRun(!run);
-                            if (!run){
-                            runningRef.current = true; 
-                            runSimulation()}}}>
-                        {run ? '⏹' : '▶'}
-                    </button>
-                    <button className = "button"
-                        onClick = {() => {
-                        setGrid(generateEmptyGrid())
-                    }}>
-                        ❌
-                    </button>
-                    <button className = "button"
-                        onClick= {() => {
-                        setGrid(generateRandomGrid())
-                    }}>
-                        🔄
-                    </button>
-                </div>
-            </div>    
+            </div>  
         </div>
+        <div className = "buttons-container">
+            <p className = "comands">Background Controls</p>
+            <div className = "buttons">
+                <button className = "button"
+                        onClick = {() => {
+                        setRun(!run);
+                        if (!run){
+                        runningRef.current = true; 
+                        runSimulation()}}}>
+                    {run ? '⏹' : '▶'}
+                </button>
+                <button className = "button"
+                    onClick = {() => {
+                    setGrid(generateEmptyGrid())
+                }}>
+                    ❌
+                </button>
+                <button className = "button"
+                    onClick= {() => {
+                    setGrid(generateRandomGrid())
+                }}>
+                    🔄
+                </button>
+            </div>
+        </div>
+    </div>    
+
     )
 }
 

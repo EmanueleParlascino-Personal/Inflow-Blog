@@ -1,40 +1,31 @@
-
 import './App.css';
 import GameOfLife from './GameOfLife';
+import image from './Images/page.png'
 
 function App() {
 
   return (
-  
-      <div className = "main">
 
+      <div className = "main">
         <GameOfLife/>
-        <nav>
-          <ul class="menuItems">
-            <li><a href='#' data-item='Home'>Home</a></li>
-            <li><a href='#' data-item='About'>About</a></li>
-            <li><a href='#' data-item='Projects'>Projects</a></li>
-            <li><a href='#' data-item='Blog'>Blog</a></li>
-            <li><a href='#' data-item='Contact'>Contact</a></li>
-          </ul>
-          <p>
-            First blog post:
-            Hi and welcome to my blog, this is the place where I share my thoughts, my stories my experiences and everything I go through that I consider to be worth sharing
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-            Let me tell you a little bit about myself
-          </p>
-        </nav>
+        <div className='statement'>
+          <h3>Hi there! I'm <b>Emanuele</b>, a web developer, I specialize in React and .Net but I am always open to learn new technology at any moment, 
+          </h3>
+        </div>
+        <h2>About me</h2>
+        <p></p>
+        <div className='projects-cont'>
+          <h2 className='projects-title'>Projects</h2>
+          <div className='project-cont'>
+            <img className='project-picture' src = {image} alt= 'website screen'/>
+            <h4>Tiny Spotlight</h4>
+            <p>A tool designed to shine a spotlight on the less popular artists, 
+              a seed based on a song title, artist name, or genre of music is used to generate a playlist.</p>
+
+
+            <div className='footer-tech'></div>
+          </div>
+        </div>
       </div>
     
   );
