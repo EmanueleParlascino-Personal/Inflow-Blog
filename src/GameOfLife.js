@@ -74,7 +74,7 @@ function GameOfLife(){
             })
         })
         
-        setTimeout(runSimulation, 500)
+        setTimeout(runSimulation, 1000)
     }, [])
     
 
