@@ -1,5 +1,5 @@
 import './Gol.css';
-import React, {useCallback, useState, useRef, useEffect, useLayoutEffect} from "react"
+import React, {useCallback, useState, useRef, useEffect} from "react"
 import produce from 'immer'
 
 
@@ -20,18 +20,7 @@ import produce from 'immer'
     ]
 
 
-    function useWindowSize() {
-        const [size, setSize] = useState([0, 0]);
-        useLayoutEffect(() => {
-        function updateSize() {
-            setSize([window.innerWidth, window.innerHeight]);
-        }
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
-        }, []);
-        return size;
-    }
+   
     const generateEmptyGrid = () =>{
         const rows = [];
             for (let i = 0; i< numRows; i++) {
@@ -54,19 +43,6 @@ function GameOfLife(){
         return generateRandomGrid()
     });
     const [ run, setRun] = useState(true)
-
-    const [width, height] = useWindowSize();
-
-    //numRows = height;
-    //numCols = width;
-    
-
-
-   
-
-    
-
-    
 
     const runningRef = useRef(run);
     runningRef.current = run;
@@ -98,7 +74,7 @@ function GameOfLife(){
             })
         })
         
-        setTimeout(runSimulation, 300)
+        setTimeout(runSimulation, 500)
     }, [])
     
 
@@ -119,7 +95,7 @@ function GameOfLife(){
                         })
                         setGrid(newGrid)
                     }}
-                    style = {{width: 20, height: 20, backgroundColor: grid[i][k] ? "#DAD6D2" : '#E3E0DD', transition: "all .3s ease",
+                    style = {{width: 20, height: 20, backgroundColor: grid[i][k] ? "#1a1a1a" : '#080401', transition: "all .3s ease",
                     WebkitTransition: "all .5s ease",
                     MozTransition: "all .5s ease"}} />))}
             </div>  

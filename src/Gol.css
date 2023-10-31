@@ -2,19 +2,22 @@
     width: 100%;
     position: fixed;
     z-index: -1;
+    transform: translateX(-50vw);
 }
 .buttons-container{
     display: flex;
     flex-direction: column;
     position: fixed;
+    width: 50%;
+    text-align: center;
     top: 0;
     right:0 ;
     z-index: 3;
     
 }
 .comands{
-    margin-right: 1%;
-    font-family: "Roboto";
+    margin-right: 3%;
+    font-family: raleway;
     align-self: flex-end;
     font-size: 1rem;
 }
@@ -28,10 +31,10 @@
     padding: 4px 20px 4px;
     outline: 0;
     min-width: 60px;
-    border: 1px solid black;
+    border: 1px solid rgb(226, 226, 226);
     cursor: pointer;
     position: relative;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(251, 255, 201);
     z-index: 5;
 }
 

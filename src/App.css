@@ -1,20 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&family=Playpen+Sans&family=Roboto:wght@100&family=Shadows+Into+Light&display=swap');
 
+@font-face {
+    font-family: raleway;
+    src: url("./Fonts/Raleway-Medium.ttf");
+}
+
 .main{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    color:white;
     font-family: 'Shadows Into Light', cursive;
 }
 
 .statement{
-    width: 40%;
+    width: 70%;
     margin-top: 20%;
-    margin-left: 5%;
-    padding: 55px;
-    border-radius: 65%;
-    background-color: #c5a27f27;
-    font-family: 'Playpen Sans', cursive;
+    margin-bottom: -40vh;
+    height: 100vh;
+    font-family: raleway;
+    font-size: 2rem;
     z-index: 1;
 }
+
+b{
+    color: green;
+    text-shadow: 0px 0px 12px rgba(255, 255, 255, 0.452);
+}
+
+.about-p{
+    font-size: 1.6rem;
+}
+
+p{
+    font-family: raleway;
+}
+
+h1{
+    font-size: 4.5rem;
+}
+
+.projects-cont{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 60px; 
+    margin: 0px 20px;
+}
+
+.project-cont{
+    width: 25vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-picture{
+    width: 24vw;
+}
+
+.phonesCont{
+    width: 20vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around ;
+}
+
+.phoneScreen{
+    width: 150px;
+    height: 240px;
+}
+
+h4{
+    font-size: 2rem;
+    margin-bottom: -10px;
+}
+
 
 
