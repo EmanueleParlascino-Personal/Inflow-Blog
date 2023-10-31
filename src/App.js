@@ -1,6 +1,6 @@
 import './App.css';
 import GameOfLife from './GameOfLife';
-import image from './Images/page.png'
+import image from './Images/MessagesScreenLine.png'
 
 function App() {
 
